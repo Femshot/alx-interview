@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 """A module containing Pascal triangle function"""
-from math import factorial
+#from math import factorial
 
 
 def pascal_triangle(n):
