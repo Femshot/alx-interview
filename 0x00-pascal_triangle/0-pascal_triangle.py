@@ -1,6 +1,15 @@
 #!/usr/bin/python3
 """A module containing Pascal triangle function"""
-#from math import factorial
+
+
+def factorial(a):
+    """Returns factorial of a number"""
+    res = 1
+    while a > 0:
+        res = res * a
+        a -= 1
+
+    return res
 
 
 def pascal_triangle(n):
