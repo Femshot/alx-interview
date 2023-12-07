@@ -23,8 +23,8 @@ def pascal_triangle(n):
     if n <= 0:
         return []
 
-    triangle = [[factorial(x)//(factorial(y)*factorial(x-y))
-                for y in range(x+1)] for x in range(1, n)]
+    triangle = [(factorial(x)//(factorial(y)*factorial(x-y))
+                for y in range(x+1)) for x in range(1, n)]
 
     triangle[0:0] = [[1]]
     return triangle
