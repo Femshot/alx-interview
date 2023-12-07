@@ -28,8 +28,7 @@ def canUnlockAll(boxes):
             lockedBox.append(index)
             unlockedAll = False
 
-    if not unlockedAll:
-        for box in lockedBox:
+    for box in lockedBox:
             unlockedAll = True if box in haveKey else False
 
     return unlockedAll
