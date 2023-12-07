@@ -18,17 +18,20 @@ def canUnlockAll(boxes):
     """
     haveKey = [0]
     lockedBox = []
-    unlockedAll = False
     for index, box in enumerate(boxes):
         if index in haveKey:
-            for key in box:
-                haveKey.append(key)
-            unlockedAll = True
+            haveKey.extend(box)
         else:
             lockedBox.append(index)
-            unlockedAll = False
 
-    for box in lockedBox:
-            unlockedAll = True if box in haveKey else False
+    for idx, box in enumerate(lockedBox.copy()):
+        if box in haveKey:
+            haveKey.extend(boxes[box])
+            lockedBox.remove(box)
+
+    if lockedBox:
+        return False
+    else:
+        return True
 
     return unlockedAll
