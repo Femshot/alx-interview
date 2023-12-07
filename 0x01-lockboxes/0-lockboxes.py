@@ -24,7 +24,7 @@ def canUnlockAll(boxes):
         else:
             lockedBox.append(index)
 
-    for idx, box in enumerate(lockedBox.copy()):
+    for box in lockedBox.copy():
         if box in haveKey:
             haveKey.extend(boxes[box])
             lockedBox.remove(box)
@@ -33,5 +33,3 @@ def canUnlockAll(boxes):
         return False
     else:
         return True
-
-    return unlockedAll
