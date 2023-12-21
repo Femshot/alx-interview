@@ -19,12 +19,12 @@ if __name__ == "__main__":
                     codes[words[-2]] = codes.get(words[-2], 0) + 1
                 count += 1
             if count == 10:
-                print(f"File size: {file_size}")
+                print(f"File size: {file_size:d}")
                 for code in sorted(codes.keys()):
-                    print(f"{code}: {codes[code]}")
+                    print(f"{code}: {codes[code]:d}")
                 count = 0
-    except KeyboardInterrupt as err:
-        print(f"File size: {file_size}")
+    except KeyboardInterrupt:
+        print(f"File size: {file_size:d}")
         for code in sorted(codes.keys()):
-            print(f"{code}: {codes[code]}")
-        raise err
+            print(f"{code}: {codes[code]:d}")
+        raise
