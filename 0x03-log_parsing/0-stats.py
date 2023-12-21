@@ -10,6 +10,12 @@ count = 0
 if __name__ == "__main__":
     import sys
 
+    def print_out(file_info, codes_info):
+        """Prints information of files and status codes"""
+        print(f"File size: {file_info:d}")
+        for code in sorted(codes_info.keys()):
+            print(f"{code}: {codes_info[code]:d}")
+
     try:
         for line in sys.stdin:
             words = line.split()
@@ -19,12 +25,9 @@ if __name__ == "__main__":
                     codes[words[-2]] = codes.get(words[-2], 0) + 1
                 count += 1
             if count == 10:
-                print(f"File size: {file_size:d}")
-                for code in sorted(codes.keys()):
-                    print(f"{code}: {codes[code]:d}")
+                print_out(file_size, codes)
                 count = 0
+        print_out(file_size, codes)
     except KeyboardInterrupt:
-        print(f"File size: {file_size:d}")
-        for code in sorted(codes.keys()):
-            print(f"{code}: {codes[code]:d}")
+        print_out(file_size, codes)
         raise
