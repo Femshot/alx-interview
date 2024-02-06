@@ -17,6 +17,9 @@ def island_perimeter(grid):
             break
         y += 1
 
+    if (not grid) or (not grid[0]) or (not grid[y][x]):
+        return 0
+
     return find_next_sq(y, x, found_sq, grid)
 
 
@@ -49,12 +52,12 @@ def check_neigh(a, b, grid, found_sq):
     """
     next_sqs = []
 
+    if ((a - 1) >= 0) and grid[a-1][b]:
+        next_sqs.append((a-1, b))
     if (b - 1) >= 0 and grid[a][b-1]:
         next_sqs.append((a, b-1))
     if (b < (len(grid[0]) - 1)) and grid[a][b+1]:
         next_sqs.append((a, b+1))
-    if ((a - 1) >= 0) and grid[a-1][b]:
-        next_sqs.append((a-1, b))
     if (a < (len(grid) - 1)) and grid[a+1][b]:
         next_sqs.append((a+1, b))
 
