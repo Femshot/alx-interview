@@ -7,17 +7,21 @@ def island_perimeter(grid):
     y = 0
     found_sq = []
 
+    if (not grid) or (not grid[0]):
+        return 0
+
+    len_grid, len_row = len(grid), len(grid[0])
     while y < len(grid):        # Checks for first island block then exits
         x = 0
-        while x < len(grid[0]):
+        while x < len_grid:
             if grid[y][x]:
                 break
             x += 1
-        if x < len(grid[0]) and grid[y][x]:
+        if x < len_row and grid[y][x]:
             break
         y += 1
 
-    if (not grid) or (not grid[0]) or (not grid[y][x]):
+    if y >= len_grid or x >= len_row:
         return 0
 
     return find_next_sq(y, x, found_sq, grid)

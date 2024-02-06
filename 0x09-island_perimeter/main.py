@@ -20,8 +20,14 @@ if __name__ == "__main__":
     ]
     grid3 = [[1]]
     grid4 = [[1, 0]]
+    grid5 = [[]]
+    grid6 = []
+    grid7 = [[0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0]]
 
     print(island_perimeter(grid))
     print(island_perimeter(grid2))
     print(island_perimeter(grid3))
     print(island_perimeter(grid4))
+    print(island_perimeter(grid5))
+    print(island_perimeter(grid6))
+    print(island_perimeter(grid7))
