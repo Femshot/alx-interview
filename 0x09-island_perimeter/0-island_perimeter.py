@@ -7,7 +7,7 @@ def island_perimeter(grid):
     y = 0
     found_sq = []
 
-    while y < len(grid):
+    while y < len(grid):        # Checks for first island block then exits
         x = 0
         while x < len(grid[0]):
             if grid[y][x]:
@@ -25,11 +25,13 @@ def find_next_sq(y, x, found, grid):
     other_sq = []
     perimeter = 0
 
+    if (y, x) in found:
+        return 0
     found.append((y, x))
     other_sq = check_neigh(y, x, grid, found)
-    for points in other_sq:
-        perimeter += find_next_sq(*points, found, grid)
-    perimeter += add_perimeter(len(other_sq))
+    perimeter += 4 - len(other_sq)          # 4 is for single isolated island
+    for a, b in set(other_sq) - set(found):
+        perimeter += find_next_sq(a, b, found, grid)
     return perimeter
 
 
@@ -46,29 +48,14 @@ def check_neigh(a, b, grid, found_sq):
         list of all neigbouring land cells not found yet
     """
     next_sqs = []
-    if grid[a][b-1] and (a, b-1) not in found_sq:
+
+    if (b - 1) >= 0 and grid[a][b-1]:
         next_sqs.append((a, b-1))
-    if grid[a][b+1] and (a, b+1) not in found_sq:
+    if (b < (len(grid[0]) - 1)) and grid[a][b+1]:
         next_sqs.append((a, b+1))
-    if grid[a-1][b] and (a-1, b) not in found_sq:
+    if ((a - 1) >= 0) and grid[a-1][b]:
         next_sqs.append((a-1, b))
-    if grid[a+1][b] and (a+1, b) not in found_sq:
+    if (a < (len(grid) - 1)) and grid[a+1][b]:
         next_sqs.append((a+1, b))
 
     return next_sqs
-
-
-def add_perimeter(n):
-    """ Adds available perimeter calculated from a cell
-
-        Calculation is done based on presence of surrounding land cells
-        where 3 lands are connected only 1 side of the cell counts as perimeter
-    """
-    if n == 4 or n == 0:
-        return 0
-    elif n == 3:
-        return 1
-    elif n == 2:
-        return 2
-    elif n == 1:
-        return 3
