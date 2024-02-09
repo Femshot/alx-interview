@@ -11,9 +11,9 @@ def island_perimeter(grid):
         return 0
 
     len_grid, len_row = len(grid), len(grid[0])
-    while y < len(grid):        # Checks for first island block then exits
+    while y < len_grid:        # Checks for first island block then exits
         x = 0
-        while x < len_grid:
+        while x < len_row:
             if grid[y][x]:
                 break
             x += 1
