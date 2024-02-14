@@ -13,26 +13,25 @@ def isWinner(x, nums):
 
     Return: Maria or Ben depending on who won most rounds, None if no winner
     """
-    if not nums or (len(nums) != x):
+    if (not nums or not x) and (len(nums) != x):
         return None
 
-    winner = {'Maria': 0, 'Ben': 0}
+    maria = ben = 0
 
     for n in nums:
         prime_nums = []
 
-        for digit in range(1, n+1):
+        for digit in range(2, n+1):
             if isprime(digit):
                 prime_nums.append(digit)
-
         if (len(prime_nums) % 2) == 0:
-            winner['Ben'] += 1
+            ben += 1
         else:
-            winner['Maria'] += 1
+            maria += 1
 
-    if winner['Maria'] > winner["Ben"]:
+    if maria > ben:
         return 'Maria'
-    elif winner['Ben'] > winner["Maria"]:
+    elif ben > maria:
         return 'Ben'
     else:
         return None
@@ -40,8 +39,6 @@ def isWinner(x, nums):
 
 def isprime(number):
     """ Determines if a number if a prime number or not """
-    if number == 1:
-        return False
     for x in range(2, (number // 2) + 1):
         if number % x == 0:
             return False
