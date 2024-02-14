@@ -13,7 +13,7 @@ def isWinner(x, nums):
 
     Return: Maria or Ben depending on who won most rounds, None if no winner
     """
-    if not nums or not x:
+    if not nums or x <= 0:
         return None
 
     maria = ben = 0
@@ -21,7 +21,7 @@ def isWinner(x, nums):
     for n in nums:
         prime_nums = []
 
-        if not x:
+        if x == 0:
             break
 
         for digit in range(2, n+1):
