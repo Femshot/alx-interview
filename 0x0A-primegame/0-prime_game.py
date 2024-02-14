@@ -27,10 +27,12 @@ def isWinner(x, nums):
         for digit in range(2, n+1):
             if isprime(digit):
                 prime_nums.append(digit)
+
         if (len(prime_nums) % 2) == 0:
             ben += 1
         else:
             maria += 1
+        print(f"Round {x}")
         x -= 1
 
     if maria > ben:
