@@ -32,8 +32,10 @@ def isWinner(x, nums):
 
     if winner['Maria'] > winner["Ben"]:
         return 'Maria'
-    else:
+    elif winner['Ben'] > winner["Maria"]:
         return 'Ben'
+    else:
+        return None
 
 
 def isprime(number):
