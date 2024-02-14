@@ -17,11 +17,12 @@ def isWinner(x, nums):
         return None
 
     maria = ben = 0
+    rounds = x
 
     for n in nums:
         prime_nums = []
 
-        if x == 0:
+        if rounds == 0:
             break
 
         for digit in range(2, n+1):
@@ -32,8 +33,8 @@ def isWinner(x, nums):
             ben += 1
         else:
             maria += 1
-        print(f"Round {x}")
-        x -= 1
+
+        rounds -= 1
 
     if maria > ben:
         return 'Maria'
