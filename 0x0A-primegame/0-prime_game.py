@@ -13,13 +13,16 @@ def isWinner(x, nums):
 
     Return: Maria or Ben depending on who won most rounds, None if no winner
     """
-    if (not nums or not x) and (len(nums) != x):
+    if not nums or not x:
         return None
 
     maria = ben = 0
 
     for n in nums:
         prime_nums = []
+
+        if not x:
+            break
 
         for digit in range(2, n+1):
             if isprime(digit):
@@ -28,6 +31,7 @@ def isWinner(x, nums):
             ben += 1
         else:
             maria += 1
+        x -= 1
 
     if maria > ben:
         return 'Maria'
